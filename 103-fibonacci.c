@@ -1,10 +1,10 @@
 #include <stdio.h>
 
 /**
-  * main - Prints the sum of Even Fibonacci numbers
-  * less than 4000000.
+  * main - finds and prints the sum of the even-valued terms
+  * followed by a new line
   *
-  * Return: Nothing!
+  * Return: Always 0 (success)
   */
 int main(void)
 {
@@ -23,6 +23,6 @@ int main(void)
 		++i;
 	}
 
-	printf("%ld\n", sum);
+	printf("%lu\n", sum);
 	return (0);
 }
