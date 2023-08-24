@@ -9,9 +9,12 @@
  * @next: points to the next node
  *
  * Description: singly linked list node structure
+<<<<<<< HEAD
  * for Holberton project
+=======
+ *for Holberton project
+>>>>>>> f1be779ef2df835bc7278bf03b6c0ca4f6370ac6
  */
-
 typedef struct list_s
 {
 char *str;
