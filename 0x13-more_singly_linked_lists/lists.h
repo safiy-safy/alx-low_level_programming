@@ -34,8 +34,4 @@ listint_t *reverse_listint(listint_t **head);
 size_t print_listint_safe(const listint_t *head);
 size_t free_listint_safe(listint_t **h);
 listint_t *find_listint_loop(listint_t *head);
-<<<<<<< HEAD
-
-=======
->>>>>>> e2bf48cca3bc5006ac1c33621999775a28bfeb48
 #endif 
