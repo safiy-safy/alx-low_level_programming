@@ -1,35 +1,58 @@
 /**
-* A palindromic number reads the same both ways. 
-*  The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
-* Write a function to find the largest palindrome made from the product of two 3-digit numbers.
+ * A palindromic number reads the same both ways. 
+ *  The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
+ * Write a function to find the largest palindrome made from the product of two 3-digit numbers.
+*/
 
-function isPalindrome(a) {
-  if (typeof a !== 'number') return `${a} is not a number!`;
+/* Checks if a given String is a Palindrome */
+let isPalindrome = (string) => {
 
-a = a.toString().split('');
-
-for (var i = 0; i < (a.length / 2); i++){
- if (a[i] !== a[a.length -1 - i]){
-  return false;
-   }
- }  
-  return true;
+    let backwardString = string.split('').reverse().join('')
+    if(string === backwardString){
+        return true
+    }
+    return false
 }
 
-function largestPalindrome(){
-let ans = 0;
+/* Solution Function */
+let largestPalindromeProduct = (numberOfdigits) => {
 
-for(let x = 999; x >= 100; x--){
-  for(let y = 999; y >=100; y--){
-     let z = x * y;
+    /* Keeps Track of Largest Product found so far */
+    let largestProduct = 0
+    
+    /* Variables for Iteration */
+    let i
+    let j
 
-    if (z < ans) break;
-if (isPalindrome(z) && z > ans ){
-  ans = z
-      }
-     }
-   }
-  return ans;
+    /* Determine Starting and Finish Value */
+    let startValueString = '1'
+    for(i = 1; i < numberOfdigits; i ++){
+        startValueString = startValueString + '0'
+    }
+    let finishValueString = startValueString + '0'
+
+    let startValue = parseInt(startValueString)
+    let finishValue = parseInt(finishValueString)
+
+    /* Find Products of all number combinations with the correct
+        number of digits */
+    for(i = startValue; i < finishValue - 1; i ++){
+        for(j = startValue + 1; j < finishValue; j++){
+            let product = i * j
+            /* If product is palindrome, and larger than our current largest,
+                update largest product */
+            if(isPalindrome(product.toString()) && product > largestProduct){
+                largestProduct = product
+            }
+        }
+    }
+
+    return largestProduct
+
 }
 
-console.log(largestPalindrome());
+
+/* Check Solution */
+console.log(largestPalindromeProduct())
+​
+
