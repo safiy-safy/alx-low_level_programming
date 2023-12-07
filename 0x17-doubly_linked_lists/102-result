@@ -1,25 +1,35 @@
-def largest_palindrome_product(n):
-    '''Find Largest Palindrome Product
-    '''
- 
-    upper_limit = (10**(n))-1 
-    lower_limit = 1 + upper_limit//10  
-  
-    max_product = 0
-    for i in range(upper_limit,lower_limit-1, -1):
-     
-        for j in range(i,lower_limit-1,-1):
-            product = i * j
-            if (product < max_product):
-                break
-            number = product
-            reverse = 0
+/**
+* A palindromic number reads the same both ways. 
+*  The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
+* Write a function to find the largest palindrome made from the product of two 3-digit numbers.
 
-            while (number != 0):
-                reverse = reverse * 10 + number % 10
-                number =number // 10
+function isPalindrome(a) {
+  if (typeof a !== 'number') return `${a} is not a number!`;
 
-            if (product == reverse and product > max_product):
-                max_product = product
+a = a.toString().split('');
 
-    return max_product
+for (var i = 0; i < (a.length / 2); i++){
+ if (a[i] !== a[a.length -1 - i]){
+  return false;
+   }
+ }  
+  return true;
+}
+
+function largestPalindrome(){
+let ans = 0;
+
+for(let x = 999; x >= 100; x--){
+  for(let y = 999; y >=100; y--){
+     let z = x * y;
+
+    if (z < ans) break;
+if (isPalindrome(z) && z > ans ){
+  ans = z
+      }
+     }
+   }
+  return ans;
+}
+
+console.log(largestPalindrome());
